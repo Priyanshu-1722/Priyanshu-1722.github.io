@@ -29,8 +29,21 @@
       background-size: cover;
     }
     main {
-      background: rgba(0, 0, 0, 0.7); /* dark overlay for readability */
+      background: rgba(0, 0, 0, 0.7);
       min-height: 100vh;
+    }
+    .resume-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ff99;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .resume-btn:hover {
+      background-color: #00cc77;
     }
   </style>
 </head>
@@ -41,7 +54,7 @@
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Priyanshu Kumar" width="80" />
+          <img src="./assets/images/pretty-boy-with-glasses.jpg" alt="Priyanshu Kumar" width="80" />
         </figure>
         <div class="info-content">
           <h1 class="name">Priyanshu Kumar</h1>
@@ -94,7 +107,7 @@
         </section>
       </article>
 
-      <!-- Resume -->
+      <!-- Resume Section -->
       <article class="resume" data-page="resume">
         <header><h2>Resume</h2></header>
         <section class="timeline">
@@ -110,6 +123,8 @@
             </li>
           </ol>
         </section>
+        <br>
+        <a href="./assets/resume/DITISSRESUME.pdf" class="resume-btn" download>📄 Download Resume</a>
       </article>
 
       <!-- Contact Section -->
