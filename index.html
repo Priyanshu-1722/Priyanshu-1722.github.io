@@ -1,151 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta -->
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Priyanshu Kumar — DevSecOps & Cloud Portfolio</title>
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-  <!-- Title & Favicon -->
-  <title>Priyanshu Kumar - Portfolio</title>
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-
-  <!-- Background Styling -->
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      color: white;
-      background: url("./assets/images/green-binary-cyber-circuit-future-technology-concept-background_42077-2834.jpg") no-repeat center center fixed;
-      background-size: cover;
+    /* ===== Reset & base ===== */
+    :root{
+      --accent:#00ff99;
+      --accent-dark:#00cc77;
+      --bg-overlay: rgba(0,0,0,0.65);
+      --glass: rgba(255,255,255,0.06);
+      --text:#e6f0e9;
+      --muted: #b7c6bf;
+      --max-width:1200px;
     }
-    main {
-      background: rgba(0, 0, 0, 0.7);
-      min-height: 100vh;
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      line-height:1.45;
+      background: url("./assets/images/green-binary-cyber-circuit-future-technology-concept-background_42077-2834.jpg") center/cover fixed no-repeat;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
     }
-    .resume-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00ff99;
-      color: black;
-      font-weight: bold;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.3s ease;
+
+    /* global container to dim background and center content */
+    .page-wrap{
+      min-height:100vh;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:40px 20px;
     }
-    .resume-btn:hover {
-      background-color: #00cc77;
+
+    /* layout */
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap:32px;
+      align-items:start;
     }
+
+    /* SIDEBAR */
+    .sidebar{
+      position:sticky;
+      top:24px;
+      align-self:start;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:12px;
+      padding:22px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .avatar{
+      width:86px;
+      height:86px;
+      border-radius:50%;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,0.06);
+      margin-bottom:14px;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+    .name{
+      font-size:1.45rem;
+      margin:0 0 6px 0;
+      font-weight:700;
+      color:var(--text);
+    }
+    .subtitle{margin:0; color:var(--muted); font-size:0.95rem;}
+    .contact-list{margin:16px 0 0 0; padding:0; list-style:none; display:grid; gap:10px;}
+    .contact-list a{color:var(--accent); text-decoration:none; font-weight:600;}
+    .socials{display:flex; gap:10px; margin-top:14px;}
+    .socials a{
+      display:inline-grid; place-items:center;
+      width:36px; height:36px; border-radius:8px;
+      background:var(--glass); color:var(--text); text-decoration:none;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* NAV (top for mobile, left for desktop) */
+    .nav{
+      display:flex;
+      gap:10px;
+      margin-top:18px;
+      flex-direction:column;
+    }
+    .nav button{
+      text-align:left;
+      border:0; background:transparent;
+      color:var(--text); padding:8px 10px;
+      border-radius:8px; font-weight:600; cursor:pointer;
+    }
+    .nav button.active, .nav button:hover{
+      background: linear-gradient(90deg, rgba(0,255,153,0.12), rgba(0,204,119,0.06));
+      color:var(--accent);
+    }
+
+    /* MAIN content area */
+    main{
+      background:transparent;
+      padding:22px;
+      border-radius:12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      color:var(--text);
+    }
+    .section{
+      margin-bottom:48px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      padding:22px; border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    h1,h2,h3{margin:0 0 12px 0}
+    h1{font-size:2rem}
+    h2{font-size:1.4rem}
+    .lead{color:var(--muted)}
+
+    /* Hero */
+    .hero{
+      display:flex; gap:20px; align-items:center;
+      margin-bottom:18px;
+    }
+    .hero-left{flex:1}
+    .hero-right{display:flex; gap:10px; align-items:center; justify-content:flex-end}
+    .cta{
+      display:inline-block; padding:10px 16px; border-radius:8px;
+      background:var(--accent); color:#05120a; text-decoration:none; font-weight:700;
+      box-shadow: 0 6px 18px rgba(0,255,153,0.08);
+    }
+
+    /* Skills */
+    .skills{display:flex; gap:12px; flex-wrap:wrap}
+    .skill{
+      min-width:160px; max-width:260px;
+      background:rgba(255,255,255,0.02); padding:10px; border-radius:8px;
+    }
+    .bar{height:8px; background:rgba(255,255,255,0.06); border-radius:6px; margin-top:8px; overflow:hidden}
+    .bar > i{display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-dark)); width:60%}
+
+    /* Projects grid */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap:16px;
+    }
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .project:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .project img{width:100%; height:140px; object-fit:cover; border-radius:8px}
+
+    /* Resume embed */
+    .resume-wrap {display:flex; gap:14px; align-items:flex-start; flex-direction:column}
+    .resume-embed{width:100%; height:720px; border-radius:8px; border:0; box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+
+    /* Contact form */
+    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .form-control{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.04);
+      color:var(--text);
+      padding:12px; border-radius:8px; outline:none;
+      font-size:0.95rem;
+    }
+    input:focus, textarea:focus { box-shadow:0 6px 18px rgba(0,0,0,0.6); border-color:var(--accent) }
+    textarea{min-height:140px; resize:vertical}
+    .btn{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 14px; border-radius:8px; border:0; cursor:pointer;
+      background:var(--accent); color:#05120a; font-weight:700;
+    }
+
+    /* small screens */
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr; padding-bottom:60px}
+      .sidebar{position:relative; display:flex; flex-direction:row; gap:12px; align-items:center; padding:12px}
+      .nav{flex-direction:row; flex-wrap:wrap}
+      .hero{flex-direction:column; align-items:flex-start}
+      .resume-embed{height:520px}
+      .form-grid{grid-template-columns:1fr}
+    }
+
+    /* accessibility helper for focus outlines */
+    :focus {outline: 3px solid rgba(0,255,153,0.12); outline-offset:2px}
   </style>
 </head>
-
 <body>
-  <main>
-    <!-- Sidebar -->
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/pretty-boy-with-glasses.jpg" alt="Priyanshu Kumar" width="80" />
-        </figure>
-        <div class="info-content">
-          <h1 class="name">Priyanshu Kumar</h1>
-          <p class="title">DevSecOps & Cloud Infrastructure Enthusiast</p>
-        </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
+  <div class="page-wrap">
+    <div class="container" role="main">
 
-      <!-- Contacts -->
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-        <ul class="contacts-list">
-          <li><ion-icon name="mail-outline"></ion-icon> <a href="mailto:priyanshukmar2003@gmail.com">priyanshukmar2003@gmail.com</a></li>
-          <li><ion-icon name="phone-portrait-outline"></ion-icon> <a href="tel:+917588072548">+91 7588072548</a></li>
-          <li><ion-icon name="location-outline"></ion-icon> Pune, India</li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li><a href="https://github.com/Priyanshu-1722"><ion-icon name="logo-github"></ion-icon></a></li>
-          <li><a href="https://linkedin.com/in/priyanshu-1722"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li><button class="navbar-link active" data-nav-link>About</button></li>
-          <li><button class="navbar-link" data-nav-link>Resume</button></li>
-          <li><button class="navbar-link" data-nav-link>Portfolio</button></li>
-          <li><button class="navbar-link" data-nav-link>Contact</button></li>
-        </ul>
-      </nav>
-
-      <!-- About Section -->
-      <article class="about active" data-page="about">
-        <header><h2>About Me</h2></header>
-        <section class="about-text">
-          <p>
-            I'm a postgraduate student at CDAC Pune (PG-DITISS) passionate about building secure and scalable cloud-native systems.
-          </p>
-          <p>
-            I’ve implemented projects using Kubernetes, Jenkins, GitHub Actions, Snort IDS, ELK Stack, and more.
-          </p>
-        </section>
-      </article>
-
-      <!-- Resume Section -->
-      <article class="resume" data-page="resume">
-        <header><h2>Resume</h2></header>
-        <section class="timeline">
-          <div class="title-wrapper">
-            <ion-icon name="book-outline"></ion-icon>
-            <h3>Education</h3>
+      <!-- SIDEBAR -->
+      <aside class="sidebar" aria-label="Sidebar">
+        <div style="display:flex; flex-direction:column; align-items:flex-start">
+          <div class="avatar" aria-hidden="false">
+            <img src="./assets/images/pretty-boy-with-glasses.jpg" alt="Priyanshu Kumar profile photo">
           </div>
-          <ol>
-            <li>
-              <h4>CDAC Pune - PG-DITISS</h4>
-              <span>Feb 2025 – Present</span>
-              <p>Post Graduate Diploma in IT Infrastructure, Systems & Security.</p>
-            </li>
-          </ol>
+          <h3 class="name">Priyanshu Kumar</h3>
+          <p class="subtitle">DevSecOps & Cloud Infrastructure Enthusiast</p>
+
+          <ul class="contact-list" aria-label="Contact details">
+            <li><strong>Email:</strong> <a href="mailto:priyanshukmar2003@gmail.com">priyanshukmar2003@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+917588072548">+91 7588072548</a></li>
+            <li><strong>Location:</strong> Pune, India</li>
+          </ul>
+
+          <div class="socials" aria-label="Social links">
+            <a href="https://github.com/Priyanshu-1722" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+            <a href="https://linkedin.com/in/priyanshu-1722" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          </div>
+
+          <nav class="nav" aria-label="Primary">
+            <button class="nav-link active" data-target="#about">About</button>
+            <button class="nav-link" data-target="#resume">Resume</button>
+            <button class="nav-link" data-target="#projects">Portfolio</button>
+            <button class="nav-link" data-target="#contact">Contact</button>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main aria-live="polite">
+        <!-- HERO -->
+        <section id="about" class="section hero" aria-labelledby="about-heading">
+          <div class="hero-left">
+            <h1>Hi, I’m Priyanshu</h1>
+            <p class="lead">Postgraduate student (PG-DITISS) focused on building secure, cloud-native systems using DevSecOps practices and infrastructure automation.</p>
+            <p style="margin-top:12px">
+              <a class="cta" href="#contact">Let's talk</a>
+              <a class="cta" style="background:transparent; color:var(--text); margin-left:10px; border:1px solid rgba(255,255,255,0.04)" href="#projects">View Projects</a>
+            </p>
+          </div>
+          <div class="hero-right">
+            <!-- Quick facts -->
+            <div style="text-align:right">
+              <div style="font-weight:700">Technical Highlights</div>
+              <div class="skills" style="justify-content:flex-end; margin-top:8px">
+                <div class="skill">
+                  <div style="font-weight:700">Kubernetes</div>
+                  <div class="bar"><i style="width:78%"></i></div>
+                </div>
+                <div class="skill">
+                  <div style="font-weight:700">DevSecOps</div>
+                  <div class="bar"><i style="width:82%"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
-        <br>
-        <a href="./assets/resume/DITISSRESUME.pdf" class="resume-btn" download>📄 Download Resume</a>
-      </article>
 
-      <!-- Contact Section -->
-      <article class="contact" data-page="contact">
-        <header><h2>Contact</h2></header>
-        <form class="form" data-form>
-          <input type="text" name="fullname" placeholder="Full name" required />
-          <input type="email" name="email" placeholder="Email address" required />
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <button type="submit" disabled data-form-btn>
-            <ion-icon name="paper-plane"></ion-icon> Send Message
-          </button>
-        </form>
-      </article>
+        <!-- SKILLS / ABOUT DETAILS -->
+        <section class="section" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Skills & Tools</h2>
+          <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap">
+            <div class="skill" style="min-width:220px;">
+              <strong>Languages</strong>
+              <div class="lead">Python • Bash • SQL</div>
+            </div>
+            <div class="skill" style="min-width:220px;">
+              <strong>Cloud & Infra</strong>
+              <div class="lead">Kubernetes • Docker • AWS • Terraform</div>
+            </div>
+            <div class="skill" style="min-width:220px;">
+              <strong>Security</strong>
+              <div class="lead">Snort • ELK • SIEM • Pen-testing</div>
+            </div>
+            <div class="skill" style="min-width:220px;">
+              <strong>CI/CD</strong>
+              <div class="lead">Jenkins • GitHub Actions • Argo CD</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section" aria-labelledby="projects-heading">
+          <h2 id="projects-heading">Selected Projects</h2>
+          <p class="lead">A few highlights — click to view repository or demo.</p>
+
+          <div class="projects-grid" style="margin-top:12px">
+            <article class="project" aria-labelledby="p1">
+              <img src="./assets/images/project-redops.jpg" alt="RedOpsAI project">
+              <h3 id="p1">RedOpsAI vs BlueShield</h3>
+              <p class="lead">AI-driven Red Team vs Blue Team simulation using Snort IDS, pfSense, ELK, and custom AI modules.</p>
+              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/RedOpsAI-vs-BlueShield-AI-Driven-Cybersecurity-Simulation-Framework" target="_blank">View on GitHub</a></p>
+            </article>
+
+            <article class="project" aria-labelledby="p2">
+              <img src="./assets/images/project-k8s.jpg" alt="Kubernetes app">
+              <h3 id="p2">Full-Stack Kubernetes App</h3>
+              <p class="lead">KEDA autoscaling, RabbitMQ, Velero backups and GitHub Actions CI/CD.</p>
+              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/K8s-app-with-KEDA-autoscaling-RabbitMQ-Velero-backups-GitHub-Actions-CI-CD-pipeline." target="_blank">View on GitHub</a></p>
+            </article>
+
+            <article class="project" aria-labelledby="p3">
+              <img src="./assets/images/project-securepipeline.jpg" alt="Secure pipeline">
+              <h3 id="p3">Secure CI/CD + GitOps</h3>
+              <p class="lead">Jenkins, SonarQube, Trivy, Syft and Argo CD for production-grade pipelines.</p>
+              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/Secure-CI-CD-GitOps-Pipeline-with-Jenkins-SonarQube-Trivy-Syft-and-Argo-CD-" target="_blank">View on GitHub</a></p>
+            </article>
+          </div>
+        </section>
+
+        <!-- RESUME -->
+        <section id="resume" class="section" aria-labelledby="resume-heading">
+          <h2 id="resume-heading">Resume</h2>
+          <div class="resume-wrap" style="margin-top:12px">
+            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+              <a class="btn" href="./assets/resume/DITISSRESUME.pdf" download>📄 Download Resume</a>
+              <a class="btn" href="./assets/resume/DITISSRESUME.pdf" target="_blank" style="background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text)">Open in new tab</a>
+            </div>
+
+            <!-- embedded PDF viewer -->
+            <iframe class="resume-embed" src="./assets/resume/DITISSRESUME.pdf#toolbar=0" title="Resume — Priyanshu Kumar"></iframe>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contact</h2>
+          <p class="lead">Want to collaborate or chat? Fill the form below or reach out by email.</p>
+
+          <form id="contactForm" style="margin-top:12px" novalidate>
+            <div class="form-grid">
+              <div class="form-control">
+                <label for="fullname" class="lead">Full name</label>
+                <input id="fullname" name="fullname" type="text" placeholder="Your full name" required>
+              </div>
+
+              <div class="form-control">
+                <label for="email" class="lead">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-control">
+              <label for="subject" class="lead">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Short subject" required>
+            </div>
+
+            <div class="form-control">
+              <label for="message" class="lead">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:center; margin-top:12px">
+              <button type="submit" class="btn" id="sendBtn">Send Message</button>
+              <div id="formStatus" aria-live="polite" style="color:var(--muted)"></div>
+            </div>
+          </form>
+        </section>
+
+      </main>
     </div>
-  </main>
+  </div>
 
-  <!-- Scripts -->
-  <script src="./assets/js/script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    /* ===== Simple navigation behavior ===== */
+    document.querySelectorAll('.nav-link').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const target = document.querySelector(e.currentTarget.dataset.target);
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    /* highlight nav item while scrolling */
+    const sections = Array.from(document.querySelectorAll('main .section, main .hero'));
+    const navButtons = Array.from(document.querySelectorAll('.nav-link'));
+    const onScroll = ()=>{
+      const y = window.scrollY + 120;
+      for(let i=sections.length-1;i>=0;i--){
+        const s = sections[i];
+        if(s.offsetTop <= y){
+          navButtons.forEach(b=>b.classList.remove('active'));
+          const id = '#'+s.id;
+          const btn = document.querySelector('.nav-link[data-target="'+id+'"]');
+          if(btn) btn.classList.add('active');
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    /* ===== Contact form basic validation and simulated send ===== */
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (ev)=>{
+      ev.preventDefault();
+      status.textContent = '';
+      const data = new FormData(form);
+      // basic client-side validation
+      const fullname = data.get('fullname').trim();
+      const email = data.get('email').trim();
+      const subject = data.get('subject').trim();
+      const message = data.get('message').trim();
+      if(!fullname || !email || !subject || !message){
+        status.textContent = 'Please fill in all fields.';
+        return;
+      }
+      // basic email format check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailRegex.test(email)){
+        status.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      // simulate sending (replace with real endpoint integration if you have one)
+      const btn = document.getElementById('sendBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try{
+        await new Promise(r=>setTimeout(r, 1200)); // simulate network
+        status.textContent = 'Message sent — I will get back to you soon. Thank you!';
+        form.reset();
+      }catch(err){
+        status.textContent = 'Something went wrong — please try again later.';
+      }finally{
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      }
+    });
+
+    /* Accessibility: keyboard nav shortcuts for nav buttons (optional) */
+    document.addEventListener('keydown', (e)=>{
+      if(e.altKey && (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4')){
+        const idx = Number(e.key) - 1;
+        document.querySelectorAll('.nav-link')[idx]?.click();
+      }
+    });
+  </script>
 </body>
 </html>
