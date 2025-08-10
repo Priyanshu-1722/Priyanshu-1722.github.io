@@ -19,6 +19,7 @@
       --text:#e6f0e9;
       --muted: #b7c6bf;
       --max-width:1200px;
+      --tag-bg: rgba(0,255,153,0.08);
     }
     *{box-sizing:border-box}
     html,body{height:100%;}
@@ -89,6 +90,7 @@
       width:36px; height:36px; border-radius:8px;
       background:var(--glass); color:var(--text); text-decoration:none;
       border:1px solid rgba(255,255,255,0.03);
+      font-weight:700;
     }
 
     /* NAV (top for mobile, left for desktop) */
@@ -160,13 +162,25 @@
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02);
       transition:transform .25s ease, box-shadow .25s ease;
+      display:flex; flex-direction:column;
+      min-height:260px;
     }
     .project:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.6)}
     .project img{width:100%; height:140px; object-fit:cover; border-radius:8px}
+    .project .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{background:var(--tag-bg); color:var(--accent); padding:6px 8px; border-radius:999px; font-size:0.8rem; font-weight:700}
+
+    .project .meta{margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:10px}
+    .project .meta a{display:inline-block; text-decoration:none; color:var(--text); font-weight:700; background:transparent; border:1px solid rgba(255,255,255,0.03); padding:8px 10px; border-radius:8px}
 
     /* Resume embed */
     .resume-wrap {display:flex; gap:14px; align-items:flex-start; flex-direction:column}
     .resume-embed{width:100%; height:720px; border-radius:8px; border:0; box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+
+    /* About stats */
+    .stats{display:flex; gap:18px; margin-top:12px; flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,0.02); padding:12px; border-radius:8px; min-width:120px; text-align:center}
+    .stat strong{display:block;font-size:1.3rem; color:var(--accent)}
 
     /* Contact form */
     .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
@@ -194,6 +208,7 @@
       .hero{flex-direction:column; align-items:flex-start}
       .resume-embed{height:520px}
       .form-grid{grid-template-columns:1fr}
+      .project{min-height:unset}
     }
 
     /* accessibility helper for focus outlines */
@@ -244,21 +259,34 @@
               <a class="cta" href="#contact">Let's talk</a>
               <a class="cta" style="background:transparent; color:var(--text); margin-left:10px; border:1px solid rgba(255,255,255,0.04)" href="#projects">View Projects</a>
             </p>
+
+            <!-- About stats (like your screenshot) -->
+            <div class="stats">
+              <div class="stat">
+                <strong>120+</strong>
+                Projects
+              </div>
+              <div class="stat">
+                <strong>95%</strong>
+                Client satisfaction
+              </div>
+              <div class="stat">
+                <strong>2+</strong>
+                Years experience
+              </div>
+            </div>
           </div>
-          <div class="hero-right">
-            <!-- Quick facts -->
-            <div style="text-align:right">
-              <div style="font-weight:700">Technical Highlights</div>
-              <div class="skills" style="justify-content:flex-end; margin-top:8px">
-                <div class="skill">
-                  <div style="font-weight:700">Kubernetes</div>
-                  <div class="bar"><i style="width:78%"></i></div>
-                </div>
-                <div class="skill">
-                  <div style="font-weight:700">DevSecOps</div>
-                  <div class="bar"><i style="width:82%"></i></div>
+
+          <div class="hero-right" aria-hidden="true">
+            <!-- Profile large card -->
+            <div style="width:220px; text-align:center">
+              <div style="width:190px; height:190px; margin:0 auto 12px; border-radius:50%; padding:6px; background:linear-gradient(45deg, rgba(0,255,153,0.06), rgba(0,204,119,0.04));">
+                <div style="width:100%; height:100%; border-radius:50%; overflow:hidden; background:#06110b">
+                  <img src="./assets/images/pretty-boy-with-glasses.jpg" alt="Priyanshu large photo" style="width:100%; height:100%; object-fit:cover; display:block">
                 </div>
               </div>
+              <div style="font-weight:700">DevSecOps & Cloud</div>
+              <div class="lead" style="font-size:0.9rem">Infrastructure & Security Enthusiast</div>
             </div>
           </div>
         </section>
@@ -270,18 +298,22 @@
             <div class="skill" style="min-width:220px;">
               <strong>Languages</strong>
               <div class="lead">Python • Bash • SQL</div>
+              <div class="bar"><i style="width:85%"></i></div>
             </div>
             <div class="skill" style="min-width:220px;">
               <strong>Cloud & Infra</strong>
               <div class="lead">Kubernetes • Docker • AWS • Terraform</div>
+              <div class="bar"><i style="width:80%"></i></div>
             </div>
             <div class="skill" style="min-width:220px;">
               <strong>Security</strong>
               <div class="lead">Snort • ELK • SIEM • Pen-testing</div>
+              <div class="bar"><i style="width:78%"></i></div>
             </div>
             <div class="skill" style="min-width:220px;">
               <strong>CI/CD</strong>
               <div class="lead">Jenkins • GitHub Actions • Argo CD</div>
+              <div class="bar"><i style="width:84%"></i></div>
             </div>
           </div>
         </section>
@@ -292,26 +324,115 @@
           <p class="lead">A few highlights — click to view repository or demo.</p>
 
           <div class="projects-grid" style="margin-top:12px">
+            <!-- Existing projects -->
             <article class="project" aria-labelledby="p1">
               <img src="./assets/images/project-redops.jpg" alt="RedOpsAI project">
               <h3 id="p1">RedOpsAI vs BlueShield</h3>
               <p class="lead">AI-driven Red Team vs Blue Team simulation using Snort IDS, pfSense, ELK, and custom AI modules.</p>
-              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/RedOpsAI-vs-BlueShield-AI-Driven-Cybersecurity-Simulation-Framework" target="_blank">View on GitHub</a></p>
+              <div class="tags">
+                <span class="tag">snort</span>
+                <span class="tag">elk</span>
+                <span class="tag">pfSense</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/RedOpsAI-vs-BlueShield-AI-Driven-Cybersecurity-Simulation-Framework" target="_blank" rel="noopener">View Repo</a>
+              </div>
             </article>
 
             <article class="project" aria-labelledby="p2">
               <img src="./assets/images/project-k8s.jpg" alt="Kubernetes app">
               <h3 id="p2">Full-Stack Kubernetes App</h3>
               <p class="lead">KEDA autoscaling, RabbitMQ, Velero backups and GitHub Actions CI/CD.</p>
-              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/K8s-app-with-KEDA-autoscaling-RabbitMQ-Velero-backups-GitHub-Actions-CI-CD-pipeline." target="_blank">View on GitHub</a></p>
+              <div class="tags">
+                <span class="tag">kubernetes</span>
+                <span class="tag">keda</span>
+                <span class="tag">ci/cd</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/K8s-app-with-KEDA-autoscaling-RabbitMQ-Velero-backups-GitHub-Actions-CI-CD-pipeline." target="_blank" rel="noopener">View Repo</a>
+              </div>
             </article>
 
             <article class="project" aria-labelledby="p3">
               <img src="./assets/images/project-securepipeline.jpg" alt="Secure pipeline">
               <h3 id="p3">Secure CI/CD + GitOps</h3>
               <p class="lead">Jenkins, SonarQube, Trivy, Syft and Argo CD for production-grade pipelines.</p>
-              <p style="margin-top:8px"><a class="btn" href="https://github.com/Priyanshu-1722/Secure-CI-CD-GitOps-Pipeline-with-Jenkins-SonarQube-Trivy-Syft-and-Argo-CD-" target="_blank">View on GitHub</a></p>
+              <div class="tags">
+                <span class="tag">jenkins</span>
+                <span class="tag">trivy</span>
+                <span class="tag">argocd</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/Secure-CI-CD-GitOps-Pipeline-with-Jenkins-SonarQube-Trivy-Syft-and-Argo-CD-" target="_blank" rel="noopener">View Repo</a>
+              </div>
             </article>
+
+            <!-- NEW: Secure CI/CD with Helm + RBAC -->
+            <article class="project" aria-labelledby="p4">
+              <img src="./assets/images/project-helm.jpg" alt="Secure CI/CD with Helm">
+              <h3 id="p4">🛡️ Secure CI/CD with Helm + RBAC</h3>
+              <p class="lead">Pipeline for secure app delivery on Kubernetes using Jenkins, Helm charts, GitHub Actions, RBAC, and image scanning. Includes multi-stage deployment with isolation and secrets management.</p>
+              <div class="tags">
+                <span class="tag">ci-cd</span>
+                <span class="tag">helm</span>
+                <span class="tag">jenkins</span>
+                <span class="tag">rbac</span>
+                <span class="tag">image-scanning</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/secure-cicd-k8s.git" target="_blank" rel="noopener">View Repo</a>
+                <a href="#" target="_blank" rel="noopener">View Repo</a>
+              </div>
+            </article>
+
+            <!-- NEW: Enterprise Network Simulation -->
+            <article class="project" aria-labelledby="p5">
+              <img src="./assets/images/project-enterprise.jpg" alt="Enterprise Network Simulation">
+              <h3 id="p5">🏢 Enterprise Network Simulation (CDAC)</h3>
+              <p class="lead">Simulated enterprise-grade IT infrastructure on VirtualBox with Windows Server 2025. Configured AD DS, WDS, DHCP, VPN, Exchange Server, FSRM, IIS, and GPOs for real-world enterprise deployment.</p>
+              <div class="tags">
+                <span class="tag">windows-server</span>
+                <span class="tag">active-directory</span>
+                <span class="tag">virtualbox</span>
+                <span class="tag">exchange</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/CDAC-Enterprise-Network-Deployment" target="_blank" rel="noopener">View Repo</a>
+              </div>
+            </article>
+
+            <!-- NEW: Decentralized Voting System (Blockchain) -->
+            <article class="project" aria-labelledby="p6">
+              <img src="./assets/images/project-vote.jpg" alt="Decentralized Voting">
+              <h3 id="p6">🗳️ Decentralized Voting System (Blockchain)</h3>
+              <p class="lead">Blockchain-based voting app using Solidity, FastAPI backend, Vue.js frontend, and Metamask wallet. Features smart contracts, voter auth, and real-time results with full Web3 stack.</p>
+              <div class="tags">
+                <span class="tag">blockchain</span>
+                <span class="tag">solidity</span>
+                <span class="tag">web3</span>
+                <span class="tag">fastapi</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/-Decentralized-Voting-System-Using-Blockchain" target="_blank" rel="noopener">View Repo</a>
+              </div>
+            </article>
+
+            <!-- NEW: Apache Monitoring with ELK -->
+            <article class="project" aria-labelledby="p7">
+              <img src="./assets/images/project-elk.jpg" alt="Apache Monitoring with ELK">
+              <h3 id="p7">📊 Apache Monitoring with ELK</h3>
+              <p class="lead">Real-time web server monitoring using Filebeat, Logstash, and Kibana with custom access logs and visual dashboards. Used for identifying bottlenecks and response time trends.</p>
+              <div class="tags">
+                <span class="tag">elk-stack</span>
+                <span class="tag">filebeat</span>
+                <span class="tag">logstash</span>
+                <span class="tag">kibana</span>
+              </div>
+              <div class="meta">
+                <a href="https://github.com/Priyanshu-1722/Web-Server-Performance-Monitoring-using-ELK-Stack" target="_blank" rel="noopener">View Repo</a>
+              </div>
+            </article>
+
           </div>
         </section>
 
@@ -383,7 +504,7 @@
     const sections = Array.from(document.querySelectorAll('main .section, main .hero'));
     const navButtons = Array.from(document.querySelectorAll('.nav-link'));
     const onScroll = ()=>{
-      const y = window.scrollY + 120;
+      const y = window.scrollY + 140;
       for(let i=sections.length-1;i>=0;i--){
         const s = sections[i];
         if(s.offsetTop <= y){
