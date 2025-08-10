@@ -530,5 +530,36 @@
     });
   })();
 </script>
+<script>
+  // Smooth scrolling on click
+  const navButtons = document.querySelectorAll('.nav button');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      if (targetId && document.querySelector(targetId)) {
+        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll-spy: observe sections to highlight current nav
+  const sections = document.querySelectorAll('main section[id]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const navBtn = document.querySelector(`.nav button[data-target="#${id}"]`);
+      if (entry.isIntersecting && navBtn) {
+        navButtons.forEach(b => b.classList.remove('active'));
+        navBtn.classList.add('active');
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.5 // 50% of section visible
+  });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
