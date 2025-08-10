@@ -419,7 +419,7 @@
           </div>
         </section>
 
-        <!-- CONTACT -->
+<!-- CONTACT -->
 <section id="contact" class="section" aria-labelledby="contact-heading">
   <h2 id="contact-heading">Contact</h2>
   <p class="lead">Want to collaborate or chat? Fill the form below or reach out by email.</p>
@@ -459,13 +459,18 @@
   </form>
 </section>
 
+<!-- AJAX submit for smooth UX -->
 <script>
-  // Optional: AJAX submit for no page reload
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
+  const sendBtn = document.getElementById('sendBtn');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    status.textContent = "";
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending...";
+
     const data = new FormData(form);
     try {
       const response = await fetch(form.action, {
@@ -481,85 +486,11 @@
       }
     } catch {
       status.textContent = "Network error. Please try again.";
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send Message";
     }
   });
 </script>
-
-    /* ===== Simple navigation behavior ===== */
-    document.querySelectorAll('.nav-link').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        const target = document.querySelector(e.currentTarget.dataset.target);
-        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
-
-    /* highlight nav item while scrolling */
-    const sections = Array.from(document.querySelectorAll('main .section, main .hero'));
-    const navButtons = Array.from(document.querySelectorAll('.nav-link'));
-    const onScroll = ()=>{
-      const y = window.scrollY + 140;
-      for(let i=sections.length-1;i>=0;i--){
-        const s = sections[i];
-        if(s.offsetTop <= y){
-          navButtons.forEach(b=>b.classList.remove('active'));
-          const id = '#'+s.id;
-          const btn = document.querySelector('.nav-link[data-target="'+id+'"]');
-          if(btn) btn.classList.add('active');
-          break;
-        }
-      }
-    };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-
-    /* ===== Contact form basic validation and simulated send ===== */
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    form.addEventListener('submit', async (ev)=>{
-      ev.preventDefault();
-      status.textContent = '';
-      const data = new FormData(form);
-      // basic client-side validation
-      const fullname = data.get('fullname').trim();
-      const email = data.get('email').trim();
-      const subject = data.get('subject').trim();
-      const message = data.get('message').trim();
-      if(!fullname || !email || !subject || !message){
-        status.textContent = 'Please fill in all fields.';
-        return;
-      }
-      // basic email format check
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailRegex.test(email)){
-        status.textContent = 'Please enter a valid email address.';
-        return;
-      }
-
-      // simulate sending (replace with real endpoint integration if you have one)
-      const btn = document.getElementById('sendBtn');
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      try{
-        await new Promise(r=>setTimeout(r, 1200)); // simulate network
-        status.textContent = 'Message sent — I will get back to you soon. Thank you!';
-        form.reset();
-      }catch(err){
-        status.textContent = 'Something went wrong — please try again later.';
-      }finally{
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
-      }
-    });
-
-    /* Accessibility: keyboard nav shortcuts for nav buttons (optional) */
-    document.addEventListener('keydown', (e)=>{
-      if(e.altKey && (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4')){
-        const idx = Number(e.key) - 1;
-        document.querySelectorAll('.nav-link')[idx]?.click();
-      }
-    });
-  </script>
 </body>
 </html>
