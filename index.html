@@ -420,45 +420,71 @@
         </section>
 
         <!-- CONTACT -->
-        <section id="contact" class="section" aria-labelledby="contact-heading">
-          <h2 id="contact-heading">Contact</h2>
-          <p class="lead">Want to collaborate or chat? Fill the form below or reach out by email.</p>
+<section id="contact" class="section" aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Contact</h2>
+  <p class="lead">Want to collaborate or chat? Fill the form below or reach out by email.</p>
 
-          <form id="contactForm" style="margin-top:12px" novalidate>
-            <div class="form-grid">
-              <div class="form-control">
-                <label for="fullname" class="lead">Full name</label>
-                <input id="fullname" name="fullname" type="text" placeholder="Your full name" required>
-              </div>
+  <!-- Formspree-enabled contact form -->
+  <form id="contactForm"
+        action="https://formspree.io/f/xwpqanbe"
+        method="POST"
+        style="margin-top:12px">
 
-              <div class="form-control">
-                <label for="email" class="lead">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" required>
-              </div>
-            </div>
+    <div class="form-grid">
+      <div class="form-control">
+        <label for="fullname" class="lead">Full name</label>
+        <input id="fullname" name="fullname" type="text" placeholder="Your full name" required>
+      </div>
 
-            <div class="form-control">
-              <label for="subject" class="lead">Subject</label>
-              <input id="subject" name="subject" type="text" placeholder="Short subject" required>
-            </div>
-
-            <div class="form-control">
-              <label for="message" class="lead">Message</label>
-              <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
-            </div>
-
-            <div style="display:flex; gap:10px; align-items:center; margin-top:12px">
-              <button type="submit" class="btn" id="sendBtn">Send Message</button>
-              <div id="formStatus" aria-live="polite" style="color:var(--muted)"></div>
-            </div>
-          </form>
-        </section>
-
-      </main>
+      <div class="form-control">
+        <label for="email" class="lead">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+      </div>
     </div>
-  </div>
 
-  <script>
+    <div class="form-control">
+      <label for="subject" class="lead">Subject</label>
+      <input id="subject" name="subject" type="text" placeholder="Short subject" required>
+    </div>
+
+    <div class="form-control">
+      <label for="message" class="lead">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+    </div>
+
+    <div style="display:flex; gap:10px; align-items:center; margin-top:12px">
+      <button type="submit" class="btn" id="sendBtn">Send Message</button>
+      <div id="formStatus" aria-live="polite" style="color:var(--muted)"></div>
+    </div>
+  </form>
+</section>
+
+<script>
+  // Optional: AJAX submit for no page reload
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        status.textContent = "Message sent! I’ll get back to you soon.";
+        form.reset();
+      } else {
+        status.textContent = "Oops—something went wrong. Please try again.";
+      }
+    } catch {
+      status.textContent = "Network error. Please try again.";
+    }
+  });
+</script>
+
     /* ===== Simple navigation behavior ===== */
     document.querySelectorAll('.nav-link').forEach(btn=>{
       btn.addEventListener('click', e=>{
