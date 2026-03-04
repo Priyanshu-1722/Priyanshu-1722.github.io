@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Priyanshu Kumar — Portfolio</title>
+    <meta name="author" content="Priyanshu Kumar">
+    <meta name="description" content="SOC Analyst portfolio showcasing threat detection, SIEM monitoring and cybersecurity projects">
+    <meta name="keywords" content="SOC Analyst, Cybersecurity, SIEM, Threat Detection, Incident Response, Blue Team">
+
+    <meta property="og:title" content="Priyanshu Kumar | SOC Analyst Portfolio">
+    <meta property="og:description" content="Cybersecurity portfolio with SOC monitoring and threat detection projects">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://priyanshu-1722.github.io">
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Reset & base ===== */
+        
+         :root {
+            --accent: #00ff99;
+            --accent-dark: #00cc77;
+            --bg-overlay: rgba(0, 0, 0, 0.65);
+            --glass: rgba(255, 255, 255, 0.06);
+            --text: #e6f0e9;
+            --muted: #b7c6bf;
+            --max-width: 1200px;
+            --tag-bg: rgba(0, 255, 153, 0.08);
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            color: var(--text);
+            line-height: 1.45;
+            background: url("./assets/images/green-binary-cyber-circuit-future-technology-concept-background_42077-2834.jpg") center/cover fixed no-repeat;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+        /* global container to dim background and center content */
+        
+        .page-wrap {
+            min-height: 100vh;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        /* layout */
+        
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+        /* SIDEBAR */
+        
+        .sidebar {
+            position: sticky;
+            top: 24px;
+            align-self: start;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        
+        .avatar {
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 14px;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .name {
+            font-size: 1.45rem;
+            margin: 0 0 6px 0;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        
+        .contact-list {
+            margin: 16px 0 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+        
+        .contact-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        
+        .socials a {
+            display: inline-grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--glass);
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            font-weight: 700;
+        }
+        /* NAV (top for mobile, left for desktop) */
+        
+        .nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            flex-direction: column;
+        }
+        
+        .nav button {
+            text-align: left;
+            border: 0;
+            background: transparent;
+            color: var(--text);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .nav button.active,
+        .nav button:hover {
+            background: linear-gradient(90deg, rgba(0, 255, 153, 0.12), rgba(0, 204, 119, 0.06));
+            color: var(--accent);
+        }
+        /* MAIN content area */
+        
+        main {
+            background: transparent;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            color: var(--text);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.015));
+            padding: 22px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 12px 0
+        }
+        
+        h1 {
+            font-size: 2rem
+        }
+        
+        h2 {
+            font-size: 1.4rem
+        }
+        
+        .lead {
+            color: var(--muted)
+        }
+        /* Hero */
+        
+        .hero {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        
+        .hero-left {
+            flex: 1
+        }
+        
+        .hero-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-end
+        }
+        
+        .cta {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #05120a;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(0, 255, 153, 0.08);
+        }
+        /* Skills */
+        
+        .skills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+        
+        .skill {
+            min-width: 160px;
+            max-width: 260px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            margin-top: 8px;
+            overflow: hidden
+        }
+        
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            width: 60%
+        }
+        /* Projects grid */
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        
+        .project {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: transform .25s ease, box-shadow .25s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 260px;
+        }
+        
+        .project:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        
+        .project img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px
+        }
+        
+        .project .tags {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+        
+        .tag {
+            background: var(--tag-bg);
+            color: var(--accent);
+            padding: 6px 8px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700
+        }
+        
+        .project .meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px
+        }
+        
+        .project .meta a {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 8px 10px;
+            border-radius: 8px
+        }
+        /* Resume embed */
+        
+        .resume-wrap {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            flex-direction: column
+        }
+        
+        .resume-embed {
+            width: 100%;
+            height: 720px;
+            border-radius: 8px;
+            border: 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        /* About stats */
+        
+        .stats {
+            display: flex;
+            gap: 18px;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 8px;
+            min-width: 120px;
+            text-align: center
+        }
+        
+        .stat strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--accent)
+        }
+        /* Contact form */
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+        
+        .form-control {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            padding: 12px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+        
+        input:focus,
+        textarea:focus {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent)
+        }
+        
+        textarea {
+            min-height: 140px;
+            resize: vertical
+        }
+        
+        .btn {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 0;
+            cursor: pointer;
+            background: var(--accent);
+            color: #05120a;
+            font-weight: 700;
+        }
+        /* small screens */
+        
+        @media (max-width:980px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding-bottom: 60px
+            }
+            .sidebar {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                gap: 12px;
+                align-items: center;
+                padding: 12px
+            }
+            .nav {
+                flex-direction: row;
+                flex-wrap: wrap
+            }
+            .hero {
+                flex-direction: column;
+                align-items: flex-start
+            }
+            .resume-embed {
+                height: 520px
+            }
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+            .project {
+                min-height: unset
+            }
+        }
+        
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            background: var(--accent);
+            color: #05120a;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        #backToTop:hover {
+            background: var(--accent-dark);
+        }
+        /* accessibility helper for focus outlines */
+        
+         :focus {
+            outline: 3px solid rgba(0, 255, 153, 0.12);
+            outline-offset: 2px
+        }
+        
+        #socStatus {
+            background: #000;
+            border-bottom: 1px solid #00ff99;
+            color: #00ff99;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 6px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .status-item {
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0% {
+                opacity: 1
+            }
+            50% {
+                opacity: .4
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .skill {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .bar i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #00ff99, #00cc77);
+        }
+        /* Fix Shodan widget styling */
+        
+        .shodan-search {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            max-width: 600px;
+        }
+        
+        .shodan-search input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 153, 0.4);
+            background: rgba(0, 0, 0, 0.6);
+            color: #00ff99;
+        }
+        
+        .shodan-search button {
+            padding: 12px 18px;
+            border: none;
+            background: #00ff99;
+            color: #000;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .shodan-search button:hover {
+            background: #00cc77;
+        }
+        
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .threat-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 153, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .cve-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        
+        .cve-list li {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 3px solid #00ff99;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .cve-list a {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .cve-list li {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 4px solid #ff4444;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+    </style>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Priyanshu Kumar",
+            "jobTitle": "SOC Analyst",
+            "url": "https://priyanshu-1722.github.io",
+            "sameAs": [
+                "https://github.com/Priyanshu-1722",
+                "https://linkedin.com/in/priyanshukumar10/"
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <div id="socStatus">
+        <span class="status-item">🟢 SOC Monitoring Active</span>
+        <span class="status-item">🟢 SIEM Log Collection Running</span>
+        <span class="status-item">🟢 Threat Intelligence Connected</span>
+        <span class="status-item">🟢 Endpoint Telemetry Active</span>
+    </div>
+    <div class="page-wrap">
+        <div class="container" role="main">
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar" aria-label="Sidebar">
+                <div style="display:flex; flex-direction:column; align-items:flex-start">
+                    <div class="avatar" aria-hidden="false">
+                        <img src="./assets/images/pretty-boy-with-glasses-unique-cool-pfp-illustration-9htzabtsdynle9ln.jpg" alt="Priyanshu Kumar profile photo">
+                    </div>
+                    <h3 class="name">Priyanshu Kumar</h3>
+                    <p class="subtitle">SOC Analyst | Blue Team | SIEM | Threat Detection & Incident Response</p>
+
+                    <ul class="contact-list" aria-label="Contact details">
+                        <li><strong>Email:</strong> <a href="mailto:priyanshukmar2003@gmail.com">priyanshukmar2003@gmail.com</a></li>
+                        <li><strong>Phone:</strong> <a href="tel:+917588072548">+91 7588072548</a></li>
+                        <li><strong>Location:</strong> Pune, India</li>
+                    </ul>
+
+                    <div class="socials" aria-label="Social links">
+                        <a href="https://github.com/Priyanshu-1722" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+                        <a href="https://linkedin.com/in/priyanshukumar10/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+                    </div>
+
+                    <nav class="nav" aria-label="Primary">
+                        <button class="nav-link active" data-target="#about">About</button>
+                        <button class="nav-link" data-target="#resume">Resume</button>
+                        <button class="nav-link" data-target="#projects">Portfolio</button>
+                        <button class="nav-link" data-target="#contact">Contact</button>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- MAIN -->
+            <main aria-live="polite">
+                <!-- HERO -->
+                <section id="about" class="section hero" aria-labelledby="about-heading">
+                    <div class="hero-left">
+                        <h1>Hi, I’m Priyanshu</h1>
+                        <p class="lead">
+                            SOC Analyst with hands-on experience in threat detection, security monitoring, and incident investigation using SIEM tools. Experienced in analyzing security alerts, investigating suspicious activity, and strengthening enterprise security posture. Background
+                            in DevSecOps, cloud security, and infrastructure monitoring.
+                        </p>
+                        <p style="margin-top:12px">
+                            <a class="cta" href="#contact">Let's talk</a>
+                            <a class="cta" style="background:transparent; color:var(--text); margin-left:10px; border:1px solid rgba(255,255,255,0.04)" href="#projects">View Projects</a>
+                        </p>
+                </section>
+
+                <!-- SKILLS / ABOUT DETAILS -->
+                <section class="section" aria-labelledby="skills-heading">
+                    <h2 id="skills-heading">Skills & Tools</h2>
+                    <div class="skills">
+
+                        <!-- Languages -->
+                        <div class="skill">
+                            <strong>Languages</strong>
+                            <div class="lead">Python • Bash • SQL</div>
+                            <div class="bar"><i style="width:85%"></i></div>
+                        </div>
+
+                        <!-- Cloud -->
+                        <div class="skill">
+                            <strong>Cloud & Infra</strong>
+                            <div class="lead">Kubernetes • Docker • AWS • Terraform</div>
+                            <div class="bar"><i style="width:80%"></i></div>
+                        </div>
+
+                        <!-- Security -->
+                        <div class="skill">
+                            <strong>Security</strong>
+                            <div class="lead">
+                                SIEM • Log Analysis • Incident Response • Threat Hunting • IDS/IPS • MITRE ATT&CK
+                            </div>
+                            <div class="bar"><i style="width:78%"></i></div>
+                        </div>
+
+                        <!-- CI/CD -->
+                        <div class="skill">
+                            <strong>CI/CD</strong>
+                            <div class="lead">Jenkins • GitHub Actions • Argo CD</div>
+                            <div class="bar"><i style="width:84%"></i></div>
+                        </div>
+
+                        <!-- SOC Tools -->
+                        <div class="skill">
+                            <strong>SOC Tools</strong>
+                            <div class="lead">
+                                Microsoft Sentinel • Microsoft 365 Defender • Flare • KQL • Proofpoint
+                            </div>
+                            <div class="bar"><i style="width:80%"></i></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Security Operations Experience</h2>
+                    <div class="project">
+                        <h3>🔎 SOC Analyst – Security Monitoring</h3>
+                        <p class="lead">Monitoring and investigating security alerts using SIEM tools. Analyzing authentication anomalies, brute force attempts, suspicious network traffic, and endpoint alerts.</p>
+                        <div class="tags">
+                            <span class="tag">SIEM</span>
+                            <span class="tag">Incident Response</span>
+                            <span class="tag">Threat Detection</span>
+                            <span class="tag">Log Analysis</span>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Cybersecurity Research</h2>
+                    <div class="projects-grid">
+                        <div class="project">
+                            <h3>Detecting Brute Force Attacks</h3>
+                            <p>Understanding authentication anomalies and SIEM detection rules.</p>
+                        </div>
+
+                        <div class="project">
+                            <h3>MITRE ATT&CK Threat Hunting</h3>
+                            <p>Mapping attacker behaviour to SOC detection strategies.</p>
+                        </div>
+
+                        <div class="project">
+                            <h3>SIEM Alert Tuning</h3>
+                            <p>Reducing false positives and improving security monitoring.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Shodan Device Search</h2>
+                    <p class="lead">Search internet-exposed devices using Shodan queries.</p>
+                    <div class="shodan-search">
+                        <input type="text" id="shodanQuery" placeholder="Example: apache country:IN">
+                        <button onclick="searchShodan()">Search</button>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Threat Intelligence Dashboard</h2>
+                    <p class="lead">Live cybersecurity intelligence feeds used by SOC teams for monitoring global threats.</p>
+
+                    <div class="threat-grid">
+                        <div class="threat-card">
+                            <h3>🌍 Global Cyber Attack Map</h3>
+                            <iframe src="https://threatmap.checkpoint.com/" width="100%" height="300" style="border:none;border-radius:10px;"></iframe>
+                        </div>
+
+                        <div class="threat-card">
+                            <h3>🚨 Latest CVEs </h3>
+                            <ul class="cve-list">
+
+                                <li>
+                                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1178" target="_blank">
+CVE-2026-1178
+</a> – Authentication bypass vulnerability
+                                </li>
+
+                                <li>
+                                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1023" target="_blank">
+CVE-2026-1023
+</a> – Web server remote code execution vulnerability
+                                </li>
+
+                                <li>
+                                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-24085" target="_blank">
+CVE-2025-24085
+</a> – Windows SmartScreen security bypass vulnerability
+                                </li>
+
+                                <li>
+                                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-21333" target="_blank">
+CVE-2025-21333
+</a> – Microsoft Windows elevation of privilege vulnerability
+                                </li>
+
+                                <li>
+                                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-21626" target="_blank">
+CVE-2025-21626
+</a> – Linux Kernel privilege escalation vulnerability
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <!-- PROJECTS -->
+                        <section id="projects" class="section" aria-labelledby="projects-heading">
+                            <h2 id="projects-heading">Projects</h2>
+                            <p class="lead">A few highlights — click to view repository or demo.</p>
+
+                            <div class="projects-grid" style="margin-top:12px">
+                                <!-- Existing projects -->
+                                <article class="project" aria-labelledby="p1">
+                                    <img src="./assets/images/red+vs+blue2.webp" alt="RedOpsAI project">
+                                    <h3 id="p1">🛡️ RedOpsAI vs BlueShield</h3>
+                                    <p class="lead">AI-driven Red Team vs Blue Team simulation using Snort IDS, pfSense, ELK, and custom AI modules.</p>
+                                    <div class="tags">
+                                        <span class="tag">snort</span>
+                                        <span class="tag">elk</span>
+                                        <span class="tag">pfSense</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/RedOpsAI-vs-BlueShield-AI-Driven-Cybersecurity-Simulation-Framework" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <article class="project" aria-labelledby="p2">
+                                    <img src="./assets/images/Standard-DevOps-CICD.png" alt="Kubernetes app">
+                                    <h3 id="p2">🛡️ Full-Stack Kubernetes App</h3>
+                                    <p class="lead">KEDA autoscaling, RabbitMQ, Velero backups and GitHub Actions CI/CD.</p>
+                                    <div class="tags">
+                                        <span class="tag">kubernetes</span>
+                                        <span class="tag">keda</span>
+                                        <span class="tag">ci/cd</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/K8s-app-with-KEDA-autoscaling-RabbitMQ-Velero-backups-GitHub-Actions-CI-CD-pipeline." target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <article class="project" aria-labelledby="p3">
+                                    <img src="./assets/images/hezezlhc.CI_CD_CT_with_Nix_pic1.jpg" alt="Secure pipeline">
+                                    <h3 id="p3">🛡️ Secure CI/CD + GitOps</h3>
+                                    <p class="lead">Jenkins, SonarQube, Trivy, Syft and Argo CD for production-grade pipelines.</p>
+                                    <div class="tags">
+                                        <span class="tag">jenkins</span>
+                                        <span class="tag">trivy</span>
+                                        <span class="tag">argocd</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/Secure-CI-CD-GitOps-Pipeline-with-Jenkins-SonarQube-Trivy-Syft-and-Argo-CD-" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <!-- NEW: Secure CI/CD with Helm + RBAC -->
+                                <article class="project" aria-labelledby="p4">
+                                    <img src="./assets/images/images.png" alt="Secure CI/CD with Helm">
+                                    <h3 id="p4">🛡️ Secure CI/CD with Helm + RBAC</h3>
+                                    <p class="lead">Pipeline for secure app delivery on Kubernetes using Jenkins, Helm charts, GitHub Actions, RBAC, and image scanning. Includes multi-stage deployment with isolation and secrets management.</p>
+                                    <div class="tags">
+                                        <span class="tag">ci-cd</span>
+                                        <span class="tag">helm</span>
+                                        <span class="tag">jenkins</span>
+                                        <span class="tag">rbac</span>
+                                        <span class="tag">image-scanning</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/secure-cicd-k8s.git" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <!-- NEW: Enterprise Network Simulation -->
+                                <article class="project" aria-labelledby="p5">
+                                    <img src="./assets/images/images.jpeg" alt="Enterprise Network Simulation">
+                                    <h3 id="p5">🏢 Enterprise Network Simulation (CDAC)</h3>
+                                    <p class="lead">Simulated enterprise-grade IT infrastructure on VirtualBox with Windows Server 2025. Configured AD DS, WDS, DHCP, VPN, Exchange Server, FSRM, IIS, and GPOs for real-world enterprise deployment.</p>
+                                    <div class="tags">
+                                        <span class="tag">windows-server</span>
+                                        <span class="tag">active-directory</span>
+                                        <span class="tag">virtualbox</span>
+                                        <span class="tag">exchange</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/CDAC-Enterprise-Network-Deployment" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <!-- NEW: Decentralized Voting System (Blockchain) -->
+                                <article class="project" aria-labelledby="p6">
+                                    <img src="./assets/images/643d7058fcefba0729ab7de6_th-blockchain-use-cases-data-center.webp" alt="Decentralized Voting">
+                                    <h3 id="p6">🗳️ Decentralized Voting System (Blockchain)</h3>
+                                    <p class="lead">Blockchain-based voting app using Solidity, FastAPI backend, Vue.js frontend, and Metamask wallet. Features smart contracts, voter auth, and real-time results with full Web3 stack.</p>
+                                    <div class="tags">
+                                        <span class="tag">blockchain</span>
+                                        <span class="tag">solidity</span>
+                                        <span class="tag">web3</span>
+                                        <span class="tag">fastapi</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/-Decentralized-Voting-System-Using-Blockchain" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                                <!-- NEW: Apache Monitoring with ELK -->
+                                <article class="project" aria-labelledby="p7">
+                                    <img src="./assets/images/ELK_stack.png" alt="Apache Monitoring with ELK">
+                                    <h3 id="p7">📊 Apache Monitoring with ELK</h3>
+                                    <p class="lead">Real-time web server monitoring using Filebeat, Logstash, and Kibana with custom access logs and visual dashboards. Used for identifying bottlenecks and response time trends.</p>
+                                    <div class="tags">
+                                        <span class="tag">elk-stack</span>
+                                        <span class="tag">filebeat</span>
+                                        <span class="tag">logstash</span>
+                                        <span class="tag">kibana</span>
+                                    </div>
+                                    <div class="meta">
+                                        <a href="https://github.com/Priyanshu-1722/Web-Server-Performance-Monitoring-using-ELK-Stack" target="_blank" rel="noopener">View Repo</a>
+                                    </div>
+                                </article>
+
+                            </div>
+                        </section>
+
+                        <!-- RESUME -->
+                        <section id="resume" class="section" aria-labelledby="resume-heading">
+                            <h2 id="resume-heading">Resume</h2>
+                            <div class="resume-wrap" style="margin-top:12px">
+                                <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+                                    <a class="btn" href="./assets/resume/DITISSRESUME.pdf" download>📄 Download Resume</a>
+                                    <a class="btn" href="./assets/resume/DITISSRESUME.pdf" target="_blank" style="background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text)">Open in new tab</a>
+                                </div>
+
+                                <!-- embedded PDF viewer -->
+                                <iframe class="resume-embed" src="./assets/resume/DITISSRESUME.pdf#toolbar=0" title="Resume — Priyanshu Kumar"></iframe>
+                            </div>
+                        </section>
+
+                        <!-- CONTACT -->
+                        <section id="contact" class="section" aria-labelledby="contact-heading">
+                            <h2 id="contact-heading">Contact</h2>
+                            <p class="lead">Want to collaborate or chat? Fill the form below or reach out by email.</p>
+
+                            <!-- Formspree-enabled contact form -->
+                            <form id="contactForm" action="https://formspree.io/f/xwpqanbe" method="POST" style="margin-top:12px">
+
+                                <div class="form-grid">
+                                    <div class="form-control">
+                                        <label for="fullname" class="lead">Full name</label>
+                                        <input id="fullname" name="fullname" type="text" placeholder="Your full name" required>
+                                    </div>
+
+                                    <div class="form-control">
+                                        <label for="email" class="lead">Email</label>
+                                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-control">
+                                    <label for="subject" class="lead">Subject</label>
+                                    <input id="subject" name="subject" type="text" placeholder="Short subject" required>
+                                </div>
+
+                                <div class="form-control">
+                                    <label for="message" class="lead">Message</label>
+                                    <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                                </div>
+
+                                <div style="display:flex; gap:10px; align-items:center; margin-top:12px">
+                                    <button type="submit" class="btn" id="sendBtn">Send Message</button>
+                                    <div id="formStatus" aria-live="polite" style="color:var(--muted)"></div>
+                                </div>
+                            </form>
+                        </section>
+
+                        <script>
+                            (function() {
+                                const form = document.getElementById('contactForm');
+                                const status = document.getElementById('formStatus');
+                                const sendBtn = document.getElementById('sendBtn');
+
+                                if (!form) {
+                                    console.warn('Contact form element not found (#contactForm).');
+                                    return;
+                                }
+
+                                form.addEventListener('submit', async(e) => {
+                                    e.preventDefault();
+                                    status.textContent = '';
+                                    status.style.color = ''; // reset
+                                    if (form.dataset.sending) return;
+                                    form.dataset.sending = '1';
+
+                                    // disable button
+                                    const origText = sendBtn ? sendBtn.textContent : null;
+                                    if (sendBtn) {
+                                        sendBtn.disabled = true;
+                                        sendBtn.textContent = 'Sending...';
+                                    }
+
+                                    const data = new FormData(form);
+
+                                    try {
+                                        const response = await fetch(form.action, {
+                                            method: form.method || 'POST',
+                                            body: data,
+                                            headers: {
+                                                'Accept': 'application/json'
+                                            }
+                                        });
+
+                                        // read response body (prefer JSON when available)
+                                        const contentType = response.headers.get('content-type') || '';
+                                        let payload;
+                                        if (contentType.includes('application/json')) {
+                                            payload = await response.json();
+                                        } else {
+                                            payload = await response.text();
+                                        }
+
+                                        console.log('Formspree response status:', response.status, 'payload:', payload);
+
+                                        if (response.ok) {
+                                            status.style.color = 'var(--accent)'; // green-ish
+                                            status.textContent = '✅ Message sent! I’ll get back to you soon.';
+                                            form.reset();
+                                        } else {
+                                            // handle common Formspree validation error (422)
+                                            status.style.color = '#ffb3b3';
+                                            if (response.status === 422 && payload && payload.errors) {
+                                                status.textContent = payload.errors.map(err => err.message).join(' ');
+                                            } else if (payload && payload.detail) {
+                                                status.textContent = payload.detail;
+                                            } else {
+                                                status.textContent = 'Submission failed — see console for details.';
+                                            }
+                                        }
+                                    } catch (err) {
+                                        console.error('Network/error sending form:', err);
+                                        status.style.color = '#ffb3b3';
+                                        status.textContent = 'Network error. Please check your connection and try again.';
+                                    } finally {
+                                        if (sendBtn) {
+                                            sendBtn.disabled = false;
+                                            sendBtn.textContent = origText || 'Send Message';
+                                        }
+                                        delete form.dataset.sending;
+                                    }
+                                });
+                            })();
+                        </script>
+                        <script>
+                            // Smooth scrolling on click
+                            const navButtons = document.querySelectorAll('.nav button');
+                            navButtons.forEach(btn => {
+                                btn.addEventListener('click', () => {
+                                    const targetId = btn.getAttribute('data-target');
+                                    if (targetId && document.querySelector(targetId)) {
+                                        document.querySelector(targetId).scrollIntoView({
+                                            behavior: 'smooth'
+                                        });
+                                    }
+                                });
+                            });
+
+                            // Scroll-spy: observe sections to highlight current nav
+                            const sections = document.querySelectorAll('main section[id]');
+                            const observer = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    const id = entry.target.getAttribute('id');
+                                    const navBtn = document.querySelector(`.nav button[data-target="#${id}"]`);
+                                    if (entry.isIntersecting && navBtn) {
+                                        navButtons.forEach(b => b.classList.remove('active'));
+                                        navBtn.classList.add('active');
+                                    }
+                                });
+                            }, {
+                                root: null,
+                                threshold: 0.5 // 50% of section visible
+                            });
+
+                            sections.forEach(section => observer.observe(section));
+                        </script>
+                        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+                        <script>
+                            AOS.init({
+                                duration: 800,
+                                once: true
+                            });
+                        </script>
+                        <button id="backToTop" title="Back to Top">↑</button>
+                        <script>
+                            const backToTopBtn = document.getElementById("backToTop");
+                            window.addEventListener("scroll", () => {
+                                if (window.scrollY > 300) {
+                                    backToTopBtn.style.display = "block";
+                                } else {
+                                    backToTopBtn.style.display = "none";
+                                }
+                            });
+                            backToTopBtn.addEventListener("click", () => {
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: "smooth"
+                                });
+                            });
+                        </script>
+
+                        <script>
+                            async function loadCVEs() {
+                                const url = "https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=20";
+                                try {
+                                    const res = await fetch(url);
+                                    const data = await res.json();
+                                    const list = document.getElementById("cveFeed");
+                                    list.innerHTML = "";
+                                    let count = 0;
+                                    data.vulnerabilities.forEach(vuln => {
+                                        const cve = vuln.cve.id;
+                                        if (cve.includes("2025") || cve.includes("2026")) {
+                                            if (count < 5) {
+                                                const li = document.createElement("li");
+                                                li.innerHTML = `<a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank">${cve}</a> - Recently reported vulnerability`;
+                                                list.appendChild(li);
+                                                count++;
+                                            }
+                                        }
+                                    });
+                                } catch (e) {
+                                    document.getElementById("cveFeed").innerHTML = "<li>Unable to load CVE feed.</li>";
+                                }
+                            }
+                            loadCVEs();
+                        </script>
+
+</body>
+
+</html>
+
+</html>
