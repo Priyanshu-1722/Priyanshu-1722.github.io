@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<title>Priyanshu Kumar | SOC Analyst Portfolio</title>
+
+<meta name="author" content="Priyanshu Kumar">
+<meta name="keywords" content="SOC Analyst, Cybersecurity, SIEM, Threat Detection, Incident Response, Blue Team, Security Operations Center">
+<meta property="og:title" content="Priyanshu Kumar | SOC Analyst Portfolio">
+<meta property="og:description" content="Cybersecurity portfolio showcasing SOC monitoring, threat detection and security engineering projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://priyanshu-1722.github.io/">
+
+<link rel="shortcut icon" href="./assets/images/logo.ico">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--accent:#00ff99;
+--accent-dark:#00cc77;
+--text:#e6f0e9;
+--muted:#b7c6bf;
+}
+
+body{
+margin:0;
+font-family:Poppins,Arial;
+background:black;
+color:var(--text);
+}
+
+/* SOC STATUS BAR */
+
+#socStatus{
+background:#0a0a0a;
+color:#00ff99;
+font-family:monospace;
+display:flex;
+justify-content:center;
+gap:30px;
+padding:8px;
+border-bottom:1px solid #00ff99;
+}
+
+.status-item{
+animation:blink 2s infinite;
+font-size:12px;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:.5}
+100%{opacity:1}
+}
+
+/* MATRIX BACKGROUND */
+
+#matrixCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+opacity:.25;
+}
+
+/* LAYOUT */
+
+.container{
+display:flex;
+max-width:1200px;
+margin:auto;
+padding:40px;
+gap:40px;
+}
+
+.sidebar{
+width:260px;
+}
+
+.avatar img{
+width:80px;
+border-radius:50%;
+}
+
+main{
+flex:1;
+}
+
+.section{
+margin-bottom:50px;
+}
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.project{
+background:rgba(255,255,255,.05);
+padding:15px;
+border-radius:10px;
+}
+
+.project img{
+width:100%;
+border-radius:8px;
+}
+
+.tag{
+background:rgba(0,255,153,.2);
+padding:4px 8px;
+border-radius:20px;
+font-size:12px;
+margin-right:5px;
+}
+
+button, .btn{
+background:var(--accent);
+border:none;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Person",
+"name":"Priyanshu Kumar",
+"jobTitle":"SOC Analyst",
+"url":"https://priyanshu-1722.github.io/",
+"sameAs":[
+"https://github.com/Priyanshu-1722",
+"https://linkedin.com/in/priyanshukumar10/"
+]
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="socStatus">
+<span class="status-item">🟢 SOC Monitoring Active</span>
+<span class="status-item">🟢 SIEM Log Collection Running</span>
+<span class="status-item">🟢 Threat Intelligence Connected</span>
+<span class="status-item">🟢 Endpoint Telemetry Active</span>
+</div>
+
+<canvas id="matrixCanvas"></canvas>
+
+<div class="container">
+
+<aside class="sidebar">
+
+<div class="avatar">
+<img src="./assets/images/pretty-boy-with-glasses-unique-cool-pfp-illustration-9htzabtsdynle9ln.jpg">
+</div>
+
+<h2>Priyanshu Kumar</h2>
+<p>SOC Analyst | Blue Team</p>
+
+<p>Email: priyanshukmar2003@gmail.com</p>
+<p>Location: Pune, India</p>
+
+<a href="https://github.com/Priyanshu-1722">GitHub</a><br>
+<a href="https://linkedin.com/in/priyanshukumar10/">LinkedIn</a>
+
+</aside>
+
+<main>
+
+<section class="section">
+<h1>Hi, I'm Priyanshu</h1>
+
+<p>
+SOC Analyst experienced in threat detection, security monitoring, SIEM analysis and incident investigation.
+Background in DevSecOps, cloud infrastructure and security automation.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<h2>Skills</h2>
+
+<p>
+Python • Bash • SQL<br>
+SIEM • Threat Detection • Incident Response<br>
+Microsoft Sentinel • Defender • KQL<br>
+AWS • Kubernetes • Docker
+</p>
+
+</section>
+
+
+<section class="section">
+
+<h2>Security Operations Experience</h2>
+
+<div class="project">
+<h3>SOC Monitoring</h3>
+<p>Investigating brute force attempts, suspicious logins and endpoint alerts using SIEM tools.</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project">
+<img src="./assets/images/red+vs+blue2.webp">
+<h3>RedOpsAI vs BlueShield</h3>
+<p>Red vs Blue simulation with Snort, pfSense and ELK.</p>
+<span class="tag">Snort</span>
+<span class="tag">ELK</span>
+</div>
+
+<div class="project">
+<img src="./assets/images/Standard-DevOps-CICD.png">
+<h3>Kubernetes CI/CD</h3>
+<p>KEDA autoscaling and GitHub Actions pipeline.</p>
+<span class="tag">Kubernetes</span>
+</div>
+
+<div class="project">
+<img src="./assets/images/ELK_stack.png">
+<h3>ELK Monitoring</h3>
+<p>Web server monitoring using Filebeat, Logstash and Kibana.</p>
+<span class="tag">ELK</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>Cybersecurity Research</h2>
+
+<div class="projects-grid">
+
+<div class="project">
+<h3>Detecting Brute Force Attacks</h3>
+<p>How SOC analysts detect authentication anomalies.</p>
+</div>
+
+<div class="project">
+<h3>SIEM Alert Tuning</h3>
+<p>Reducing false positives in security monitoring.</p>
+</div>
+
+<div class="project">
+<h3>Threat Hunting with MITRE ATT&CK</h3>
+<p>Mapping attacker behaviour to detection strategies.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>Contact</h2>
+
+<form action="https://formspree.io/f/xwpqanbe" method="POST">
+
+<input type="text" name="name" placeholder="Name" required><br><br>
+<input type="email" name="email" placeholder="Email" required><br><br>
+
+<textarea name="message" placeholder="Message" required></textarea><br><br>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+const canvas=document.getElementById("matrixCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01SOCSECURITY";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+
+const drops=[];
+
+for(let i=0;i<columns;i++){drops[i]=1}
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff99";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=letters.charAt(Math.floor(Math.random()*letters.length));
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+</body>
+</html>
