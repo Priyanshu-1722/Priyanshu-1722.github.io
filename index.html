@@ -820,6 +820,54 @@ CVE-2025-21626
                             </ul>
                         </div>
 
+                        <section class="section">
+                            <h2>SOC Incident Investigation</h2>
+                            <div class="projects-grid">
+                                <div class="project">
+                                    <h3>🔐 Brute Force Attack Investigation</h3>
+                                    <p><strong>Alert Source:</strong> SIEM (Microsoft Sentinel)</p>
+                                    <p><strong>Detection:</strong> Multiple failed SSH login attempts detected from a single IP.</p>
+                                    <p><strong>Investigation Steps:</strong></p>
+
+                                    <ul>
+                                        <li>Analyzed authentication logs</li>
+                                        <li>Correlated IP with threat intelligence</li>
+                                        <li>Identified brute force pattern</li>
+                                    </ul>
+
+                                    <p><strong>Mitigation:</strong></p>
+
+                                    <ul>
+                                        <li>Blocked malicious IP via firewall</li>
+                                        <li>Enabled account lockout policy</li>
+                                        <li>Deployed Fail2Ban protection</li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="project">
+                                    <h3>📧 Phishing Email Analysis</h3>
+                                    <p><strong>Alert Source:</strong> Microsoft Defender</p>
+                                    <p><strong>Investigation Steps:</strong></p>
+
+                                    <ul>
+                                        <li>Analyzed email headers</li>
+                                        <li>Checked sender reputation</li>
+                                        <li>Inspected malicious URL</li>
+                                    </ul>
+
+                                    <p><strong>Mitigation:</strong></p>
+                                    <ul>
+                                        <li>Blocked sender domain</li>
+                                        <li>Added domain to Proofpoint block list</li>
+                                        <li>Educated user on phishing awareness</li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </section>
 
                         <!-- PROJECTS -->
                         <section id="projects" class="section" aria-labelledby="projects-heading">
